@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="..\Evently.Module.Events.Application\Evently.Module.Events.Application.csproj" />
+    <ProjectReference Include="..\Evently.Module.Events.Presentation\Evently.Module.Events.Presentation.csproj" />
+  </ItemGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Events\" />
+    </ItemGroup>
+</Project>

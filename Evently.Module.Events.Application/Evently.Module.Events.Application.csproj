@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0-preview1" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\Evently.Module.Events.Domain\Evently.Module.Events.Domain.csproj" />
+  </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Abstractions\Data\" />
+    </ItemGroup>
+</Project>
