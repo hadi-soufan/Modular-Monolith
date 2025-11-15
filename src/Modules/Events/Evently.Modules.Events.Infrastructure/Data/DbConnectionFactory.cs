@@ -1,5 +1,5 @@
 ﻿using System.Data.Common;
-using Evently.Modules.Events.Application.Abstraction.Data;
+using Evently.Modules.Events.Application.Abstractions.Data;
 using Npgsql;
 
 namespace Evently.Modules.Events.Infrastructure.Data;
@@ -11,4 +11,3 @@ internal sealed class DbConnectionFactory(NpgsqlDataSource dataSource) : IDbConn
         return await dataSource.OpenConnectionAsync();
     }
 }
-

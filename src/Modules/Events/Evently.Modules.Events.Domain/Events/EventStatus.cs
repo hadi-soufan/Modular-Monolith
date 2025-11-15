@@ -1,4 +1,5 @@
 ﻿namespace Evently.Modules.Events.Domain.Events;
+
 public enum EventStatus
 {
     Draft = 0,
@@ -6,4 +7,3 @@ public enum EventStatus
     Completed = 2,
     Canceled = 3
 }
-
