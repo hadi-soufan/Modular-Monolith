@@ -32,4 +32,3 @@ internal sealed class UserRegisteredDomainEventHandler(ISender sender, IEventBus
             cancellationToken);
     }
 }
-
