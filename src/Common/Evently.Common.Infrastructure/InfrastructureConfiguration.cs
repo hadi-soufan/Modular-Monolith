@@ -45,8 +45,8 @@ public static class InfrastructureConfiguration
         }
 
         services.TryAddSingleton<ICacheService, CacheService>();
-        services.TryAddSingleton<IEventBus, EventBus.EventBus>();
 
+        services.TryAddSingleton<IEventBus, EventBus.EventBus>();
 
         services.AddMassTransit(configure =>
         {
