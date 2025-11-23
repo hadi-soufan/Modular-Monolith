@@ -2,6 +2,8 @@
 using Evently.Modules.Ticketing.Infrastructure.Database;
 using Evently.Modules.Users.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
+using Polly;
+using Polly.Retry;
 
 namespace Evently.Api.Extensions;
 
@@ -21,6 +23,22 @@ internal static class MigrationExtensions
     {
         using TDbContext context = scope.ServiceProvider.GetRequiredService<TDbContext>();
 
-        context.Database.Migrate();
+        // Retry policy to handle database connection issues during startup
+        ResiliencePipeline pipeline = new ResiliencePipelineBuilder()
+            .AddRetry(new RetryStrategyOptions
+            {
+                MaxRetryAttempts = 5,
+                Delay = TimeSpan.FromSeconds(2),
+                BackoffType = DelayBackoffType.Exponential,
+                UseJitter = true,
+                OnRetry = args =>
+                {
+                    Console.WriteLine($"Migration attempt {args.AttemptNumber + 1} failed for {typeof(TDbContext).Name}. Retrying in {args.RetryDelay.TotalSeconds} seconds...");
+                    return ValueTask.CompletedTask;
+                }
+            })
+            .Build();
+
+        pipeline.Execute(() => context.Database.Migrate());
     }
 }
