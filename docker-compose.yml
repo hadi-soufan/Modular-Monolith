@@ -18,6 +18,16 @@ services:
       evently.identity:
         condition: service_started
 
+  evently.gateway:
+    image: ${DOCKER_REGISTRY-}eventlygateway
+    container_name: Evently.Gateway
+    build:
+      context: .
+      dockerfile: src/API/Evently.Gateway/Dockerfile
+    ports:
+      - 3000:8080
+      - 3001:8081
+
   evently.database:
     image: postgres:latest
     container_name: Evently.Database
@@ -88,3 +98,6 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+
+  
+
