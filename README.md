@@ -48,7 +48,7 @@ Manages event attendance and check-ins
 ## 🛠️ Technology Stack
 
 ### Backend
-- **.NET 8**: Latest LTS version of .NET
+- **.NET 8**: LTS version of .NET
 - **C# 12**: Modern C# features
 - **ASP.NET Core**: Web API framework
 - **Entity Framework Core**: ORM with PostgreSQL provider
